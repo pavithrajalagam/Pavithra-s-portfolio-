@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediBook - Medical Appointment Optimization</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f5f9fc;color:#1f2937}
+nav{background:#0b7fab;color:white;padding:18px 8%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:bold}
+nav ul{list-style:none;display:flex;gap:25px}
+nav a{color:white;text-decoration:none}
+.hero{padding:70px 8%;background:linear-gradient(135deg,#e8f7fc,#fff);display:flex;justify-content:space-between;align-items:center;gap:40px}
+.hero-content{max-width:600px}.hero h1{font-size:45px;color:#075985;margin-bottom:20px}
+.hero p{font-size:18px;line-height:1.6;margin-bottom:25px;color:#4b5563}
+.btn{display:inline-block;background:#0b7fab;color:white;padding:13px 25px;border-radius:8px;text-decoration:none;font-weight:bold;border:none;cursor:pointer}
+.btn:hover{background:#075985}
+.hero-card,.appointment,.feature-card,.doctor-card{background:white;border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.08)}
+.hero-card{padding:30px;width:350px}.hero-card h3{color:#075985;margin-bottom:15px}.hero-card p{margin-bottom:10px;font-size:15px}
+.section{padding:60px 8%}.section-title{text-align:center;margin-bottom:40px}.section-title h2{color:#075985;font-size:32px;margin-bottom:10px}.section-title p{color:#6b7280}
+.features,.doctors{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.feature-card,.doctor-card{padding:30px;text-align:center}.icon{font-size:40px;margin-bottom:15px}
+.feature-card h3,.doctor-card h3{margin-bottom:10px;color:#075985}.feature-card p,.doctor-card p{color:#6b7280;line-height:1.5}
+.appointment{max-width:850px;margin:auto;padding:35px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.form-group{display:flex;flex-direction:column}.form-group.full{grid-column:1/-1}
+label{margin-bottom:7px;font-weight:bold}input,select,textarea{padding:12px;border:1px solid #d1d5db;border-radius:7px;font-size:15px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#0b7fab}textarea{resize:vertical;min-height:90px}.submit-btn{margin-top:20px;width:100%}
+.doctor-avatar{width:80px;height:80px;margin:0 auto 15px;border-radius:50%;background:#dff4fb;display:flex;align-items:center;justify-content:center;font-size:35px}
+.available{color:#15803d;font-size:14px;font-weight:bold}
+footer{background:#075985;color:white;text-align:center;padding:25px;margin-top:40px}
+@media(max-width:768px){
+nav{flex-direction:column;gap:15px}nav ul{gap:15px}.hero{flex-direction:column;text-align:center}
+.hero h1{font-size:35px}.hero-card{width:100%}.features,.doctors{grid-template-columns:1fr}
+.form-grid{grid-template-columns:1fr}.form-group.full{grid-column:auto}
+}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo">🩺 MediBook</div>
+<ul>
+<li><a href="#home">Home</a></li><li><a href="#doctors">Doctors</a></li>
+<li><a href="#appointment">Appointment</a></li><li><a href="#features">Features</a></li>
+</ul>
+</nav>
+
+<section class="hero" id="home">
+<div class="hero-content">
+<h1>Smart Medical Appointment Optimization</h1>
+<p>Find the right doctor, choose the best available time, and manage medical appointments efficiently.</p>
+<a href="#appointment" class="btn">Book Appointment</a>
+</div>
+<div class="hero-card">
+<h3>⚡ Smart Scheduling</h3>
+<p>✓ Find available doctors quickly</p><p>✓ Reduce waiting time</p><p>✓ Choose convenient time slots</p>
+<p>✓ Avoid appointment conflicts</p><p>✓ Manage appointments easily</p>
+</div>
+</section>
+
+<section class="section" id="features">
+<div class="section-title"><h2>Our Features</h2><p>Designed to make healthcare appointments easier</p></div>
+<div class="features">
+<div class="feature-card"><div class="icon">🔎</div><h3>Doctor Search</h3><p>Search doctors based on specialization and availability.</p></div>
+<div class="feature-card"><div class="icon">📅</div><h3>Smart Scheduling</h3><p>Select suitable appointment slots while avoiding scheduling conflicts.</p></div>
+<div class="feature-card"><div class="icon">⏱️</div><h3>Reduce Waiting Time</h3><p>Optimize appointment timing to improve patient and hospital efficiency.</p></div>
+</div>
+</section>
+
+<section class="section" id="doctors">
+<div class="section-title"><h2>Available Doctors</h2><p>Choose a doctor according to your requirement</p></div>
+<div class="doctors">
+<div class="doctor-card"><div class="doctor-avatar">👨‍⚕️</div><h3>Dr. Rahul Kumar</h3><p>General Physician</p><div class="available">● Available Today</div></div>
+<div class="doctor-card"><div class="doctor-avatar">👩‍⚕️</div><h3>Dr. Priya Sharma</h3><p>Cardiologist</p><div class="available">● Available Today</div></div>
+<div class="doctor-card"><div class="doctor-avatar">👨‍⚕️</div><h3>Dr. Arjun Reddy</h3><p>Dermatologist</p><div class="available">● Available Tomorrow</div></div>
+</div>
+</section>
+
+<section class="section" id="appointment">
+<div class="section-title"><h2>Book an Appointment</h2><p>Enter your details to schedule an appointment</p></div>
+<div class="appointment">
+<form onsubmit="bookAppointment(event)">
+<div class="form-grid">
+<div class="form-group"><label for="name">Patient Name</label><input type="text" id="name" placeholder="Enter patient name" required></div>
+<div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" placeholder="Enter phone number" required></div>
+<div class="form-group"><label for="doctor">Select Doctor</label><select id="doctor" required><option value="">Choose Doctor</option><option>Dr. Rahul Kumar - General Physician</option><option>Dr. Priya Sharma - Cardiologist</option><option>Dr. Arjun Reddy - Dermatologist</option></select></div>
+<div class="form-group"><label for="date">Appointment Date</label><input type="date" id="date" required></div>
+<div class="form-group"><label for="time">Preferred Time</label><select id="time" required><option value="">Choose Time</option><option>09:00 AM - 09:30 AM</option><option>10:00 AM - 10:30 AM</option><option>11:00 AM - 11:30 AM</option><option>02:00 PM - 02:30 PM</option><option>04:00 PM - 04:30 PM</option></select></div>
+<div class="form-group"><label for="type">Appointment Type</label><select id="type"><option>In-Person Consultation</option><option>Online Consultation</option><option>Follow-up</option></select></div>
+<div class="form-group full"><label for="message">Additional Information</label><textarea id="message" placeholder="Enter any additional information..."></textarea></div>
+</div>
+<button type="submit" class="btn submit-btn">Confirm Appointment</button>
+</form>
+</div>
+</section>
+
+<footer><p>© 2026 MediBook | Medical Appointment Optimization System</p><p>Making healthcare scheduling smarter and easier.</p></footer>
+
+<script>
+function bookAppointment(event){
+event.preventDefault();
+const name=document.getElementById("name").value;
+const doctor=document.getElementById("doctor").value;
+const date=document.getElementById("date").value;
+const time=document.getElementById("time").value;
+alert("Appointment request submitted!\\n\\nPatient: "+name+"\\nDoctor: "+doctor+"\\nDate: "+date+"\\nTime: "+time);
+}
+</script>
+</body>
+</html>
